@@ -1,0 +1,9 @@
+delimiter //
+create trigger ActualizarVentas after insert on factura
+for each row
+begin 
+	update vendedor
+    set cantidad = cantidad - new.cantidad
+    where id=new.idCliente;
+end;
+//
